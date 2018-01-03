@@ -1,0 +1,13 @@
+{
+  "name": "4chan-list-webm",
+  "version": "1.0.0",
+  "main": "./lib/index.js",
+  "author": "Philip Scott <pscott@zeptohost.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "node ./test/test.js"
+  },
+  "dependencies": {
+    "axios": "^0.17.1"
+  }
+}
