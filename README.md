@@ -10,7 +10,13 @@ Returns an array of objects containing the webm filename and URL.
 $ yarn add 4chan-list-webm
 
 # npm
-npm install 4chan-list-webm --save
+$ npm install 4chan-list-webm --save
+```
+
+Or, using the `<script>` tag:
+
+```html
+<script src="https://unpkg.com/4chan-list-webm@1.1.0/dist/bundle.js"></script>
 ```
 
 
