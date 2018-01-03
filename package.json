@@ -5,9 +5,15 @@
   "author": "Philip Scott <pscott@zeptohost.com>",
   "license": "MIT",
   "scripts": {
-    "test": "node ./test/test.js"
+    "test": "node ./test/test.js",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "axios": "^0.17.1"
+  },
+  "devDependencies": {
+    "buble-loader": "^0.4.1",
+    "webpack": "^3.10.0"
   }
 }
