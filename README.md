@@ -4,10 +4,10 @@ Returns an array of objects containing the webm filename and URL.
 
 The data looks like this:
 ```json
-[{ filename: '1478018951860',
-    url: 'http://i.4cdn.org/wsg/1514757619690.webm' },
- { filename: '1505294337138',
-    url: 'http://i.4cdn.org/wsg/1514834417503.webm' }]
+[{ "filename": "1478018951860",
+    "url": "http://i.4cdn.org/wsg/1514757619690.webm" },
+ { "filename": "1505294337138",
+    "url": "http://i.4cdn.org/wsg/1514834417503.webm" }]
 ```
 
 ```js
@@ -23,4 +23,4 @@ listWebms(threadUrl, function (webms) {
 
 ### Why? 
 
-¯\_(ツ)_/¯
+¯\\_(ツ)_/¯
