@@ -2,10 +2,13 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  entry: './lib/index.js',
+  entry: {
+    './dist': './lib/index.js',
+    './docs': './demo/index.js'
+  },
   output: {
-    path: path.join(__dirname, './dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, './'),
+    filename: '[name]/bundle.js'
   },
   module: {
     rules: [
