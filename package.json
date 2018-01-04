@@ -1,14 +1,23 @@
 {
   "name": "4chan-list-webm",
-  "version": "1.2.0",
+  "version": "1.2.1",
+  "description": "List all webms within a 4chan thread",
   "main": "./lib/index.js",
   "author": "Philip Scott <pscott@zeptohost.com>",
   "license": "MIT",
+  "keywords": [
+    "4chan",
+    "webm",
+    "thegame"
+  ],
   "scripts": {
     "test": "node ./test/test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScottyFillups/4chan-list-webm.git"
+  },
   "dependencies": {
     "axios": "^0.17.1"
-  },
-  "devDependencies": {}
+  }
 }

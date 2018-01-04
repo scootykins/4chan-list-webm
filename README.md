@@ -3,7 +3,7 @@
 Given a thread URL, returns an array of objects containing the filename and URL of every webm.
 
 Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) with an origin of `http(s)://boards.4chan.org`,
-this module **does not work in the browser; it only works in Node.js**
+this module **does not work in the browser; it only works with Node.js**
 
 
 ## Installation
