@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 28);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1858,6 +1858,44 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var axios = __webpack_require__(8)
+var listWebms = __webpack_require__(9)
+var $ = function (x) { return document.querySelector(x); }
+
+var $entry = $('#entry')
+var $urlField = $('#url-from-thread')
+
+$('#url-from-thread').addEventListener('click', function () {
+  var url = $urlField.value
+  listWebms(url, function (data) {
+    $entry.value = JSON.stringify(data)
+  })
+})
+
+$('#random-thread').addEventListener('click', function () {
+  axios.get('http://a.4cdn.org/wsg/threads.json', { 
+    crossDomain: true,
+    withCredentials: true,
+    headers: { 'Access-Control-Allow-Origin': 'http://boards.4chan.org' }
+  })
+    .then(function (res) {
+      console.log(res.data)
+      var url = "http://boards.4chan.org/wsg/thread/" + (res.data[0].threads[1].no) + ".json"
+      console.log(url)
+      listWebms(url, function(data) {
+        $entry.value = JSON.stringify(data)
+      })
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+})
 
 
 /***/ })
