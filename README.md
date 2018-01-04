@@ -1,9 +1,12 @@
 # 4chan-list-webm
 
-Returns an array of objects containing the webm filename and URL.
+Given a thread URL, returns an array of objects containing the filename and URL of every webm.
+
+Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) with an origin of `http(s)://boards.4chan.org`,
+this module **does not work in the browser; it only works in Node.js**
 
 
-### Installation
+## Installation
 
 ```bash
 # yarn
@@ -13,14 +16,8 @@ $ yarn add 4chan-list-webm
 $ npm install 4chan-list-webm --save
 ```
 
-Or, using the `<script>` tag:
 
-```html
-<script src="https://unpkg.com/4chan-list-webm@1.1.0/dist/bundle.js"></script>
-```
-
-
-### Usage
+## Usage
 
 
 ```js
@@ -43,14 +40,14 @@ The data looks like this:
 ```
 
 
-### Options
+## Options
 
 | Option  | Description                | Type    |
 |---------|----------------------------|---------|
-| https   | Uses https instead of http | Boolean |
+| https   | Use https instead of http  | Boolean |
 
 
 
-### Why? 
+## Why? 
 
 ¯\\\_(ツ)\_/¯

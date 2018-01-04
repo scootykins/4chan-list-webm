@@ -1,21 +1,14 @@
 {
   "name": "4chan-list-webm",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "main": "./lib/index.js",
   "author": "Philip Scott <pscott@zeptohost.com>",
   "license": "MIT",
   "scripts": {
-    "test": "node ./test/test.js",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "demo": "live-server ./docs"
+    "test": "node ./test/test.js"
   },
   "dependencies": {
     "axios": "^0.17.1"
   },
-  "devDependencies": {
-    "buble-loader": "^0.4.1",
-    "live-server": "^1.2.0",
-    "webpack": "^3.10.0"
-  }
+  "devDependencies": {}
 }
