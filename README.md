@@ -1,9 +1,15 @@
 # 4chan-list-webm
 
-Given a thread URL, returns an array of objects containing the filename and URL of every webm.
+Given a board and thread number, returns an array of objects containing the filename and URL of every webm.
 
 Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) with an origin of `http(s)://boards.4chan.org`,
-this module **does not work in the browser; it only works with Node.js**
+this module **does not work in the browser; it only works with Node.js**.
+
+
+### Update 2.0.0
+
+Breaking changes:
+* Now requires arguments `board` and `threadNo` (thread number) instead of `url`
 
 
 ## Installation
@@ -23,10 +29,11 @@ $ npm install 4chan-list-webm --save
 ```js
 const listWebms = require('4chan-list-webm')
 
+// Consider the following URL: http://boards.4chan.org/wsg/thread/2045456
+// The board is 'wsg' and the thread number is 2045456
 // Note: This thread will likely 404 by the time you see this
-const threadUrl = 'http://boards.4chan.org/wsg/thread/1959335'
 
-listWebms(threadUrl, function (webms) {
+listWebms('wsg', 2045456, function (webms) {
   console.log(webms)
 })
 ```
