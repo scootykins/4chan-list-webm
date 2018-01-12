@@ -1,6 +1,7 @@
 # 4chan-list-webm
 
-Given a board and thread number, returns an array of objects containing the filename and URL of every webm.
+Given a board and thread number, returns an array of objects containing the filename, webm and thumbnail URLs.
+
 Here's a little [demonstration](http://www.4webm.org/) of `4chan-list-webm` in action.
 
 Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) with an origin of `http(s)://boards.4chan.org`,
@@ -42,9 +43,11 @@ listWebms('wsg', 2045456, function (webms) {
 The data looks like this:
 ```json
 [{ "filename": "1478018951860",
-    "url": "http://i.4cdn.org/wsg/1514757619690.webm" },
+    "url": "http://i.4cdn.org/wsg/1514757619690.webm",
+    "thumbnail": "http://i.4cdn.org/wsg/1514757619690s.jpg" },
  { "filename": "1505294337138",
-    "url": "http://i.4cdn.org/wsg/1514834417503.webm" }]
+    "url": "http://i.4cdn.org/wsg/1514834417503.webm",
+    "thumbnail": "http://i.4cdn.org/wsg/1514834417503s.jpg" }]
 ```
 
 
