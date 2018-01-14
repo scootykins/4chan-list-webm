@@ -1,6 +1,6 @@
 {
   "name": "4chan-list-webm",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "List all webms within a 4chan thread",
   "main": "./lib/index.js",
   "author": "Philip Scott <pscott@zeptohost.com>",
