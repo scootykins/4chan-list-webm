@@ -8,10 +8,9 @@ Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) w
 this module **does not work in the browser; it only works with Node.js**.
 
 
-### Update 2.0.0
+### Rate limits
 
-Breaking changes:
-* Now requires arguments `board` and `threadNo` (thread number) instead of `url`
+*As stated in the [4chan API](https://github.com/4chan/4chan-API), you must ensure that you do not make more than one request per second. It is __your__ responsiblity to ensure that the request limit is respected. I recommend using [limiter](https://www.npmjs.com/package/limiter) or [bottleneck](https://www.npmjs.com/package/bottleneck).*
 
 
 ## Installation
