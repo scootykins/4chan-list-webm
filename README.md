@@ -7,10 +7,13 @@ Here's a little [demonstration](http://www.4webm.org/) of `4chan-list-webm` in a
 Because CORS [is only supported](https://github.com/4chan/4chan-API/issues/35) with an origin of `http(s)://boards.4chan.org`,
 this module **does not work in the browser; it only works with Node.js**.
 
-
 ### Rate limits
 
 *As stated in the [4chan API](https://github.com/4chan/4chan-API), you must ensure that you do not make more than one request per second. It is __your__ responsiblity to ensure that the request limit is respected. I recommend using [limiter](https://www.npmjs.com/package/limiter) or [bottleneck](https://www.npmjs.com/package/bottleneck).*
+
+### Thumbnails
+
+You will get an `403 Forbidden error` if you try to load the thumbnails via inline linking (eg. changing the `src` attribute of an `<img>` via JavaScript, or hard-coding it). You can still download these images via a proxy server and serve them there.
 
 
 ## Installation
