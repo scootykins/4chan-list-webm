@@ -1,6 +1,6 @@
 {
   "name": "4chan-list-webm",
-  "version": "2.1.2",
+  "version": "0.0.0-development",
   "description": "List all webms within a 4chan thread",
   "main": "./lib/index.js",
   "author": "Philip Scott <pscott@zeptohost.com>",
@@ -11,13 +11,19 @@
     "thegame"
   ],
   "scripts": {
-    "test": "node ./test/test.js"
+    "test": "node ./test/test.js",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ScottyFillups/4chan-list-webm.git"
+    "url": "https://github.com/ScottyFillups/4chan-list-webm.git"
   },
   "dependencies": {
     "axios": "^0.17.1"
+  },
+  "devDependencies": {
+    "travis-deploy-once": "^4.3.3",
+    "semantic-release": "^12.4.1"
   }
 }
