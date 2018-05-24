@@ -26,6 +26,7 @@ describe('/GET webm data from a thread', function () {
     const { subject, webms } = data
 
     expect(webms).to.be.an('array').that.is.not.empty
+    expect(webms[0]).to.have.all.keys(['filename', 'url', 'thumbnail'])
     expect(subject).to.equal(sub)
   })
 
@@ -38,6 +39,7 @@ describe('/GET webm data from a thread', function () {
     const { subject, webms } = data
 
     expect(webms).to.be.an('array').that.is.not.empty
+    expect(webms[0]).to.have.all.keys(['filename', 'url', 'thumbnail'])
     expect(subject).to.equal(sub)
   })
 
