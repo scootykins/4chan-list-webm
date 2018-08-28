@@ -1,3 +1,3 @@
-const listWebms = require('./lib/index')
+'use strict'
 
-module.exports = listWebms
+module.exports = require('./lib')

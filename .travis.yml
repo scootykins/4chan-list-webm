@@ -1,10 +1,15 @@
 language: node_js
+script:
+  - npm run test
+after_script:
+  - npm run coverage
 cache:
   directories:
     - ~/.npm
 notifications:
   email: false
 node_js:
+  - '10'
   - '9'
   - '8'
 after_success:

@@ -1,57 +1,99 @@
-/* global describe, it */
-/* eslint-disable no-unused-expressions */
-const { expect } = require('chai')
-const listWebms = require('../')
+/* global beforeEach, describe, it */
+
+'use strict'
+
 const axios = require('axios')
+const chai = require('chai')
+const dirtyChai = require('dirty-chai')
+const nock = require('nock')
+const listWebms = require('../')
+const payloads = require('./data')
 
-function fetchDummyThread (board) {
-  // .threads[0] could be a stickied thread, hence .threads[1]
-  return axios.get(`http://a.4cdn.org/${board}/threads.json`)
-    .then(res => res.data[0].threads[1])
-}
+const { expect } = chai
 
-function getThreadSubject (board, threadNo) {
-  const apiUrl = `http://a.4cdn.org/${board}/thread/${threadNo}.json`
+chai.use(dirtyChai)
 
-  return axios.get(apiUrl).then(res => res.data.posts[0].sub)
-}
+describe('4chan-list-webm gets webm URLs from a thread', () => {
+  const protocols = ['http', 'https']
 
-describe('/GET webm data from a thread', function () {
-  it('should return a non-empty array', async function () {
-    const board = 'wsg'
-    const thread = await fetchDummyThread(board)
-    const sub = await getThreadSubject(board, thread.no)
+  protocols.forEach((protocol) => {
+    beforeEach(() => {
+      Object.keys(payloads).forEach((name) => {
+        protocols.forEach((protocol) => {
+          const payload = payloads[name]
 
-    const data = await listWebms(board, thread.no)
-    const { subject, webms } = data
+          nock(`${protocol}://a.4cdn.org`, { allowUnmocked: true })
+            .get(`/${payload.board}/thread/${payload.threadNo}.json`)
+            .reply(200, payload.json)
+        })
+      })
+    })
 
-    expect(webms).to.be.an('array').that.is.not.empty
-    expect(webms[0]).to.have.all.keys(['filename', 'url', 'thumbnail'])
-    expect(subject).to.equal(sub)
+    const config = protocol === 'https'
+      ? { https: true }
+      : { http: false }
+
+    describe(`Behaviour with ${protocol}`, () => {
+      it('returns an empty list when no webms are present', async () => {
+        const { board, threadNo } = payloads.empty
+        const expected = require(`./expected/${protocol}-empty-thread.json`)
+        const result = await listWebms(board, threadNo, config)
+
+        expect(expected.webms.length).to.equal(0)
+        expect(result).to.deep.equal(expected)
+      })
+
+      it('includes subject data when the thread has a subject', async () => {
+        const { board, threadNo } = payloads.subject
+        const expected = require(`./expected/${protocol}-subject-thread.json`)
+        const result = await listWebms(board, threadNo, config)
+
+        expect(expected.subject).to.not.equal(undefined)
+        expect(result).to.deep.equal(expected)
+      })
+
+      it('returns an array of objects containing webm data', async () => {
+        const { board, threadNo } = payloads.normal
+        const expected = require(`./expected/${protocol}-normal-thread.json`)
+        const result = await listWebms(board, threadNo, config)
+
+        expect(expected.webms[0]).to.have.all.keys('url', 'filename', 'thumbnail')
+        expect(expected.subject).to.equal(undefined)
+        expect(result).to.deep.equal(expected)
+      })
+
+      it('can handle a url as input', async () => {
+        const { board, threadNo } = payloads.normal
+        const url = `${protocol}://boards.4chan.org/${board}/thread/${threadNo}`
+        const expected = require(`./expected/${protocol}-normal-thread.json`)
+
+        expect(await listWebms(url)).to.deep.equal(expected)
+      })
+    })
   })
 
-  it('should work with https', async function () {
-    const board = 'wsg'
-    const thread = await fetchDummyThread(board)
-    const sub = await getThreadSubject(board, thread.no)
+  describe('Behaviour with 4chan API (ie. functional test)', () => {
+    it('succeeds with a 200 status code and some sort of payload', async () => {
+      const board = 'wsg'
+      const res = await axios.get(`https://a.4cdn.org/${board}/1.json`)
+      const threadNo = res.data.threads[1].posts[0].no
 
-    const data = await listWebms(board, thread.no, { https: true })
-    const { subject, webms } = data
+      const threadData = await listWebms(board, threadNo)
 
-    expect(webms).to.be.an('array').that.is.not.empty
-    expect(webms[0]).to.have.all.keys(['filename', 'url', 'thumbnail'])
-    expect(subject).to.equal(sub)
+      expect(threadData.webms).to.be.an('array')
+    })
   })
 
-  it('can handle undefined subjects', async function () {
-    const board = 'b'
-    const thread = await fetchDummyThread(board)
+  describe('Invalid input', () => {
+    it('throws an error if the URL cannot be parsed', async () => {
+      try {
+        await listWebms('this aint kansas any more ayyylmao')
 
-    const data = await listWebms(board, thread.no)
-    const { subject, webms } = data
-
-    // /b/ threads may not contain any webms
-    expect(webms).to.be.an('array')
-    expect(subject).to.equal(undefined)
+        expect.fail()
+      } catch (err) {
+        expect(err).to.be.an('error')
+        expect(err.message).to.equal('Invalid 4chan URL!')
+      }
+    })
   })
 })
