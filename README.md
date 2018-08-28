@@ -7,7 +7,7 @@
 
 Generate a list of webms posted in a thread.
 
-Here's a little [demonstration](https://www.4webm.org/) of `4chan-list-webm`, https://www.4webm.org, in action (plz star).
+Here's a little [demonstration](https://www.4webm.org/) of `4chan-list-webm` in action (plz star).
 
 ## Installation
 
@@ -60,7 +60,7 @@ The URL of the thread. The thumbnail and webm links will use `https` if an `http
 
 Type: `String`
 
-The short-name of the board, eg. 'wsg', 'b', etc.
+The short-name of the board, eg. `'wsg'`, `'b'`, etc.
 
 #### threadNo
 
