@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Generate a list of webms posted in a 4chan thread",
   "main": "./index.js",
-  "author": "Philip Scott <pscott@zeptohost.com>",
+  "author": "scootykins <scootykins@yahoo.com>",
   "license": "MIT",
   "keywords": [
     "4chan",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ScottyFillups/4chan-list-webm.git"
+    "url": "https://github.com/scootykins/4chan-list-webm.git"
   },
   "dependencies": {
     "axios": "^0.17.1"
