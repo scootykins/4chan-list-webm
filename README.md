@@ -1,8 +1,8 @@
 # 4chan-list-webm
 
 [![npm version](https://badge.fury.io/js/4chan-list-webm.svg)](https://badge.fury.io/js/4chan-list-webm)
-[![Build Status](https://travis-ci.org/ScottyFillups/4chan-list-webm.svg?branch=master)](https://travis-ci.org/ScottyFillups/4chan-list-webm)
-[![Coverage Status](https://coveralls.io/repos/github/ScottyFillups/4chan-list-webm/badge.svg?branch=master)](https://coveralls.io/github/ScottyFillups/4chan-list-webm?branch=master)
+[![Build Status](https://travis-ci.org/scootykins/4webm.svg?branch=master)](https://travis-ci.org/scootykins/4webm)
+[![Coverage Status](https://coveralls.io/repos/github/scootykins/4chan-list-webm/badge.svg?branch=master)](https://coveralls.io/github/scootykins/4chan-list-webm?branch=master)
 [![install size](https://packagephobia.now.sh/badge?p=4chan-list-webm)](https://packagephobia.now.sh/result?p=4chan-list-webm)
 
 Generate a list of webms posted in a thread.
